@@ -10,7 +10,7 @@ function navbar2() {
       <div className="logo" onClick={mainpage} href="/mainpage">
         BlogBouquet
       </div>
-      <div className="right">
+      <div className="right2">
         <a className="nav-link" onClick={Login} href="/login">
           Login
         </a>
