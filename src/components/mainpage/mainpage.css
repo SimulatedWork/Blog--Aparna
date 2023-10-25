@@ -1,0 +1,50 @@
+body{
+    background-color: #FD8B49;
+}
+
+.mainpage_div{
+    background-color: white;
+    height: 80vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    margin-left: 115px;
+    border: 1px solid black;
+
+}
+
+header{
+    font-size: 40px;
+    width: 85%;
+    margin: 8%;
+}
+
+#smalldesc{
+    margin: 5% 10% 10% 9%;
+    font-size: 18px;
+    width: 60%;
+}
+
+.mainimg{
+    width: 30vw;
+    height: 50vh;
+    padding: 5%;
+
+}
+
+#descrption{
+    width: 85%;
+    margin-top: 50px ;
+    margin-left: 9%;
+
+}
+
+.maininfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+hr{
+    margin-left: 50px;
+}
