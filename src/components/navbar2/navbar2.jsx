@@ -1,30 +1,26 @@
 import React from 'react'
 import "./navbar2.css"
-import mainpage from '../mainpage/mainpage';
-import Login from '../login/login';
-import Register from "../register/register";
+import Mainpage from '../mainpage/mainpage';
+
 
 function navbar2() {
   return (
-    <nav>
-      <div className="logo" onClick={mainpage} href="/mainpage">
+    <nav className='nav2'>
+      <div className="logo" onClick={Mainpage} href="/">
         BlogBouquet
       </div>
       <div className="right2">
-        <a className="nav-link" onClick={Login} href="/login">
-          Login
-        </a>
         <button>
           <a
             className="nav-link"
-            onClick={Register}
-            href="/register"
+            onClick={Mainpage}
+            href="/"
             id="button"
           >
-            Register
+            LOGOUT
           </a>
         </button>
-      </div>
+      </div>   
     </nav>
   );
 }

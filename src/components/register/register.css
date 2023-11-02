@@ -1,5 +1,5 @@
 .cover{
-    margin-left:100px;
+    margin-left:50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -7,6 +7,7 @@
     height: auto;
     align-items: center;
     background-color: white;
+    
 }
 .cover-left{
     margin-right: 15px;
@@ -21,8 +22,10 @@
 }
 .loginimg{
     align-items: center;
-    margin-left: 75px;
-    margin-top: 55px;
+    height: 60vh;
+    margin-left: 85px;
+    margin-top: 100px;
+    margin-right: 75px;
 
 }
 
@@ -44,4 +47,25 @@ input{
     height: 20px;
     width: 250px;
 
+}
+a{
+    text-decoration: none;
+}
+@media screen and (max-width :800px){
+    .cover{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 5px 10px;
+    }
+    .cover-right{
+        display: none;
+    }
+    .loginimg{
+        display: none;
+    }
+    input{
+        width: auto;
+    }
+    
 }

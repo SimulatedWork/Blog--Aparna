@@ -25,11 +25,12 @@ h1{
 }
 .loginimg{
     align-items: center;
-    margin-left: 75px;
-    margin-top: 55px;
+    height: 60vh;
+    margin-left: 85px;
+    margin-top: 70px;
+    margin-right: 75px;
 
 }
-
 .display-login{
     margin-top: 50px;
     width: 100%;
@@ -40,13 +41,26 @@ h1{
     align-items: center;
 }
 
-.submit{
+.submit > a{
     color: white;
     cursor: pointer;
+    
 }
 
 input{
     height: 20px;
     width: 250px;
 
+}
+a{
+    text-decoration: none !important;
+}
+@media screen and (max-width:800px) {
+    .cover-left-login{
+        display: none;
+    }
+    .cover{
+        margin-left:35px;
+        margin-right: 50px;
+    }
 }
