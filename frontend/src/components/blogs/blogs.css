@@ -1,0 +1,100 @@
+.blog-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80%;
+}
+ 
+#card-display{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.image{
+    width: 250px;
+    margin: 35px 50px;
+
+}
+
+.arrow{
+    color: black;
+}
+.cards{
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0% 0% 0% 16%;
+    
+}
+.card1 , .card2, .card3{
+    background-color:#f2f2f2;
+    width: 130vmin;
+    height: 250px;
+    display: flex;
+    border: solid black 1px;
+    padding-bottom:10px ;
+
+
+}
+.thought{
+    padding: 35px 50px 20px;
+    width: 60%;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 700;
+}
+
+h4.author{
+    text-align: right;
+    padding-right: 100px;
+}
+a.author{
+    margin-left: 60%;
+    width: 50%;
+    color:black;
+    text-decoration: none;
+}
+.thought-div{
+    margin-left: 60px;
+}
+.division{
+    padding-bottom: 20px;
+}
+
+.arrow{
+    cursor: pointer;
+}
+@media screen and (max-width:850px) {
+    .blog-header{
+        font-size: medium;
+        width: 110vw;
+    }
+    .card1,.card2,.card3{
+        width: 100vw;
+        height: 30vh;
+    }
+    .image{
+        width: 25%;
+        height: 65%;
+        /* position: fixed; */
+    }
+    .thought{
+        font-size: small;
+        height: 50px;
+        width: 30vw;
+        margin-top: -20px;
+        /* position: relative; */
+    }
+    h4{
+        font-size: smaller;
+        margin-left: 80px;
+
+    }
+
+}
