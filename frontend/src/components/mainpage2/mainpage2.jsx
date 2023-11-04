@@ -1,14 +1,12 @@
-import React from 'react'
-import Navbar from '../navbar/navbar'
-import "./mainpage.css";
+import React from "react";
+import Navbar2 from "../navbar2/navbar2";
+import "../mainpage/mainpage.css";
 import mainpgImage from "../../assets/mainpg-img.png";
-import Create from "../create/create.jsx"
-import createForm from '../CreateForm/createForm';
 
-function mainpage() {
+function mainpage2() {
   return (
     <div className="maindiv">
-      <Navbar />
+      <Navbar2 />
       <div className="mainpage_div">
         <div id="maininfo">
           <>
@@ -33,6 +31,6 @@ function mainpage() {
       </div>
     </div>
   );
-};
+}
 
-export default mainpage;
+export default mainpage2;
