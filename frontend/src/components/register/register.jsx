@@ -3,7 +3,6 @@ import Navbar from "../navbar/navbar";
 import "./register.css";
 import loginimg from "../../assets/login.png";
 import Login from "../login/login";
-import Create from "../create/create.css"
 
 function login() {
   return (
@@ -21,7 +20,7 @@ function login() {
               <a href="/mainpage2">Submit</a>
             </button>
             <p>
-              Already have an account?{" "}
+              Already have an account?
               <a href="/login" onClick={Login}>
                 Login
               </a>
