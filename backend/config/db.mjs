@@ -51,7 +51,7 @@ const insertBlog = async(
   image_data
 ) => {
   try{
-    const blogResult = await client.query("INSERT INTO blogs(title, intro, body, conclusion, image_data) VALUES ($1,$2,$3,$4,$5)",
+    const blogResult = await client.query("INSERT INTO Blogs(title, intro, body, conclusion, image_data) VALUES ($1,$2,$3,$4,$5)",
     [title, intro, body, conclusion, image_data]);
     return blogResult
   } catch (error){
