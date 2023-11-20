@@ -6,13 +6,23 @@ import { HiArrowLeftCircle } from "react-icons/hi2";
 import dance1 from "../../assets/dance1.avif";
 import dance2 from "../../assets/dance2.avif";
 import dance3 from "../../assets/dance3.jpg";
-import createForm from '../CreateForm/createForm';
 import {BsArrowRightShort} from "react-icons/bs";
-import Mainpage from '../mainpage/mainpage';
-
 
 
 function blogs() {
+  fetch("http://localhost:8000/api/blog")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Data from the server:", data);
+
+      // Update the DOM or perform other actions with the data
+      const messageElement = document.createElement("p");
+      messageElement.textContent = data.message;
+      document.body.appendChild(messageElement);
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+
+
   return (
     <>
       <Navbar2 />

@@ -55,6 +55,29 @@ function CreateForm() {
      setShowDeleteConfirmation(false);
    };
 
+   const handleDoneClick = () => {
+     // Prepare data to be sent to the backend
+     const formData = new FormData();
+     formData.append("message", message);
+     formData.append("title", title);
+     formData.append("profilePicture", profilePicture);
+     formData.append("bodyText", bodyText);
+     formData.append("conclusionText", conclusionText);
+
+     // Make a POST request to the backend
+     fetch("http://localhost:3000/auth/blog", {
+       method: "POST",
+       body: formData,
+     })
+       .then((response) => response.json())
+       .then((data) => {
+         console.log("Data sent to the server:", data);
+       })
+       .catch((error) =>
+         console.error("Error sending data to the server:", error)
+       );
+   };
+
 
   return (
     <>
@@ -124,7 +147,7 @@ function CreateForm() {
             </div>
           </div>
           <button className="done">
-            <a href="/blogs">Done</a>
+            <a href="/blogs" onClick={handleDoneClick}>Done</a>
           </button>
         </div>
       </div>
