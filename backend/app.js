@@ -23,7 +23,7 @@ app.get("/api", async (req, res) => {
   }
 });
 
-app.post("/api", (req, res)=>{
+app.post("/api", async (req, res)=>{
   res.send('POST request to the homepage');
 })
 

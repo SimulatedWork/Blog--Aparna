@@ -1,7 +1,8 @@
-// db.js
 import pkg from "pg";
+import pgPromise from "pg-promise";
 
 const { Client } = pkg;
+const pgp = pgPromise();
 
 const client = new Client({
   host: "localhost",
@@ -23,10 +24,39 @@ const connectToDatabase = async () => {
 const queryUsers = async () => {
   try {
     const result = await client.query(`SELECT * FROM users`);
-    return result.rows
+    console.log(result);
+    return result.rows;
   } catch (error) {
     console.error("Error querying users:", error);
   }
 };
 
-export { client, connectToDatabase, queryUsers };
+const insertUser = async (name, email, password) => {
+  try {
+    const result = await client.query(
+      "INSERT INTO users (name, email, password) VALUES ($1, $2, $3)",
+      [name, email, password]
+    );
+    return result
+  } catch (error) {
+    console.error("Error inserting user", error);
+  }
+};
+
+const insertBlog = async(
+  title,
+  intro,
+  body,
+  conclusion,
+  image_data
+) => {
+  try{
+    const blogResult = await client.query("INSERT INTO blogs(title, intro, body, conclusion, image_data) VALUES ($1,$2,$3,$4,$5)",
+    [title, intro, body, conclusion, image_data]);
+    return blogResult
+  } catch (error){
+    console.log("Error inserting datas", error)
+  }
+};
+
+export { client, connectToDatabase, queryUsers, insertUser, insertBlog };
