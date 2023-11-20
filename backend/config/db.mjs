@@ -1,4 +1,6 @@
+// db.js
 import pkg from "pg";
+
 const { Client } = pkg;
 
 const client = new Client({
@@ -9,14 +11,22 @@ const client = new Client({
   database: "BlogDb",
 });
 
-client.connect();
-
-client.query(`SELECT * FROM users`, (err, res) => {
-  if (err) {
-    console.error(err.message);
-  } else {
-    console.log(res.rows);
+const connectToDatabase = async () => {
+  try {
+    await client.connect();
+    console.log("Connected to the database");
+  } catch (error) {
+    console.error("Error connecting to the database:", error);
   }
+};
 
-  client.end();
-});
+const queryUsers = async () => {
+  try {
+    const result = await client.query(`SELECT * FROM users`);
+    return result.rows
+  } catch (error) {
+    console.error("Error querying users:", error);
+  }
+};
+
+export { client, connectToDatabase, queryUsers };

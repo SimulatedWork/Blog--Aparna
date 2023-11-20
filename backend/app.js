@@ -1,23 +1,33 @@
-const app = require('express')();
+import cors from "cors";
+import express, { json } from "express";
+import { connectToDatabase, queryUsers } from "../backend/config/db.mjs";
+import bodyParser from "body-parser";
+import { authRouter } from "./routes/auth.mjs";
 
+const app = express();
 const PORT = 8000;
 
-const details = [
-  {
-    title: "Love",
-    intro: "It is the pure form of love from mother"
-  },{
-    title: "education",
-    intro: "Wisdom is the key to success"
-  }
-]
+app.use(json());
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.json());
+app.use("/auth", authRouter);
 
-app.get("/", (req, res) => {
-  res.json(details);
+app.get("/api", async (req, res) => {
+  try {
+    await queryUsers();
+    res.send("Successfully datas are displayed from database");
+  } catch (error) {
+    console.error("Error handling request:", error);
+    res.status(500).send("Internal server error");
+  }
 });
 
-app.listen(
-    PORT,
-    () => console.log( `Server is running sucessfully on ${PORT}`)
-);
+app.post("/api", (req, res)=>{
+  res.send('POST request to the homepage');
+})
 
+app.listen(PORT, async () => {
+  await connectToDatabase()
+  console.log(`Server is running on port ${PORT}`);
+});
