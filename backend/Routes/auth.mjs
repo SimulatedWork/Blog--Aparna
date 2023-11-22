@@ -3,7 +3,7 @@ const router = Router();
 import { check, validationResult } from "express-validator";
 import { insertUser, queryUsers } from "../config/db.mjs";
 import pkg from "bcrypt";
-const { bcrypt } = pkg;
+import generateToken from "./jwtGenerator.js";
 
 
 
@@ -19,6 +19,9 @@ router.post(
     //VALIDATE THE INPUT
     const error = validationResult(req);
     const { name, email, password } = req.body;
+    let hashedPassword = await pkg.hash(password, 10);
+    generateToken()
+    console.log(hashedPassword)
     var response;
     await queryUsers().then((res) => (response = res));
     let userExist =
@@ -33,7 +36,7 @@ router.post(
     } else if (userExist) {
       return res.status(404).send("This user already exist");
     } else if (!userExist) {
-      var result = await insertUser(name, email, password);
+      var result = await insertUser(name, email, hashedPassword);
       if (result.rows.length > 0) {
         console.log(result.rows);
       } else {
@@ -41,16 +44,16 @@ router.post(
       }
     }
 
-    if (password.length < 6) {
-    }
-
-    //validate if user doesnot exist
-    let hashedPassword = await bcrypt.hash(password, 10);
-
-    console.log(hashedPassword);
-
-    res.send("Validation is done");
+    res.json({
+      token
+    })
   }
 );
+
+router.post("/login", async (req, res) => {
+  const { email } = req.body;
+  const token = await generateToken(email);
+  res.json({ token });
+});
 
 export { router as authRouter };
