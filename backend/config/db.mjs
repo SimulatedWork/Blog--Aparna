@@ -47,12 +47,11 @@ const insertBlog = async(
   title,
   intro,
   body,
-  conclusion,
-  image_data
+  conclusion
 ) => {
   try{
-    const blogResult = await client.query("INSERT INTO Blogs(title, intro, body, conclusion, image_data) VALUES ($1,$2,$3,$4,$5)",
-    [title, intro, body, conclusion, image_data]);
+    const blogResult = await client.query("INSERT INTO Blogs(title, intro, body, conclusion) VALUES ($1,$2,$3,$4)",
+    [title, intro, body, conclusion]);
     return blogResult
   } catch (error){
     console.log("Error inserting datas", error)
