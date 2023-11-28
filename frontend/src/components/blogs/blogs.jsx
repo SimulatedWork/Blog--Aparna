@@ -10,17 +10,17 @@ import {BsArrowRightShort} from "react-icons/bs";
 
 
 function blogs() {
-  fetch("http://localhost:8000/api/blog")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Data from the server:", data);
+  // fetch("http://localhost:8000/api/blog")
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     console.log("Data from the server:", data);
 
-      // Update the DOM or perform other actions with the data
-      const messageElement = document.createElement("p");
-      messageElement.textContent = data.message;
-      document.body.appendChild(messageElement);
-    })
-    .catch((error) => console.error("Error fetching data:", error));
+  //     // Update the DOM or perform other actions with the data
+  //     const messageElement = document.createElement("p");
+  //     messageElement.textContent = data.message;
+  //     document.body.appendChild(messageElement);
+  //   })
+  //   .catch((error) => console.error("Error fetching data:", error));
 
 
   return (
