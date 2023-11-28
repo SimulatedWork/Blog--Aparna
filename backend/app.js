@@ -25,8 +25,9 @@ app.get("/api/getUsers", async (req, res) => {
 
 app.post("/api/insertBlog", async (req, res)=>{
 const { title, intro, body, conclusion } = req.body;
-  var res = await insertBlog(title, intro, body, conclusion);
-  return res
+  var Blogres = await insertBlog(title, intro, body, conclusion);
+  console.log(Blogres)
+  return Blogres
 })
 
 app.listen(PORT, async () => {

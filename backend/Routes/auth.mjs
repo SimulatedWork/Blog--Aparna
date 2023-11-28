@@ -5,8 +5,7 @@ import { insertUser, queryUsers } from "../config/db.mjs";
 import pkg from "bcrypt";
 import generateToken from "./jwtGenerator.js";
 
-
-
+ 
 router.post(
   "/register",
   [

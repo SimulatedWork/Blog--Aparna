@@ -37,7 +37,7 @@ const insertUser = async (name, email, password) => {
       "INSERT INTO users (name, email, password) VALUES ($1, $2, $3)",
       [name, email, password]
     );
-    return result
+    return result;
   } catch (error) {
     console.error("Error inserting user", error);
   }

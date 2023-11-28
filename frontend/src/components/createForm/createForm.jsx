@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { HiArrowLeftCircle } from "react-icons/hi2";
 import "./createForm.css";
 import Navbar2 from "../navbar2/navbar2";
@@ -7,17 +8,17 @@ import DeleteConfirmationModal from "../Delete/delete";
 import { useNavigate } from "react-router-dom";
 
 function CreateForm() {
-  const [message, setMessage] = useState("");
   const [title, setTitle] = useState("");
+  const [intro, setIntro] = useState("");
   const [profilePicture, setProfilePicture] = useState(null);
-  const [bodyText, setBodyText] = useState("");
-  const [conclusionText, setConclusionText] = useState("");
+  const [body, setBodyText] = useState("");
+  const [conclusion, setConclusionText] = useState("");
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const navigate = useNavigate();
 
 
   const handleTextareaChange = (event) => {
-    setMessage(event.target.value);
+    setIntro(event.target.value);
   };
 
   const handleTitleChange = (event) => {
@@ -56,28 +57,35 @@ function CreateForm() {
    };
 
    const handleDoneClick = () => {
-     // Prepare data to be sent to the backend
-     const formData = new FormData();
-     formData.append("message", message);
-     formData.append("title", title);
-     formData.append("profilePicture", profilePicture);
-     formData.append("bodyText", bodyText);
-     formData.append("conclusionText", conclusionText);
+
 
      // Make a POST request to the backend
-     fetch("http://localhost:3000/auth/blog", {
-       method: "POST",
-       body: formData,
-     })
-       .then((response) => response.json())
-       .then((data) => {
-         console.log("Data sent to the server:", data);
-       })
-       .catch((error) =>
-         console.error("Error sending data to the server:", error)
-       );
-   };
+    fetch("http://localhost:8000/api/insertBlog", {
+      method: "POST",
+      headers: {
+        'content-type':'application/json',
+      },
+      body: JSON.stringify({
+        title:title,
+        intro:intro,
+        body:body,
+        conclusion:conclusion
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
 
+}
 
   return (
     <>
@@ -113,7 +121,7 @@ function CreateForm() {
               <textarea
                 className="intro"
                 placeholder="Introduction:"
-                value={message}
+                value={intro}
                 onChange={handleTextareaChange}
               ></textarea>
               {profilePicture ? (
@@ -133,7 +141,7 @@ function CreateForm() {
               <textarea
                 className="body-text"
                 placeholder="Body Text:"
-                value={bodyText}
+                value={body}
                 onChange={handleBodyTextChange}
               ></textarea>
             </div>
@@ -141,13 +149,15 @@ function CreateForm() {
               <textarea
                 className="conclusion-text"
                 placeholder="Conclusion:"
-                value={conclusionText}
+                value={conclusion}
                 onChange={handleConclusionTextChange}
               ></textarea>
             </div>
           </div>
           <button className="done">
-            <a href="/blogs" onClick={handleDoneClick}>Done</a>
+            <Link to="/blogs" onClick={handleDoneClick}>
+              Done
+            </Link>
           </button>
         </div>
       </div>

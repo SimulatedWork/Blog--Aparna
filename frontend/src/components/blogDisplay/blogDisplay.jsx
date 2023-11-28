@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { HiArrowLeftCircle } from "react-icons/hi2";
 import Navbar2 from "../navbar2/navbar2";
 import { AiFillDelete } from "react-icons/ai";
@@ -10,9 +10,26 @@ import { useNavigate } from "react-router-dom";
 
 
 function blogDisplay() {
-//     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  const navigate = useNavigate();
+const [blogData, setBlogData] = useState({});
+const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+const navigate = useNavigate();
+
+useEffect(() => {
+  //getting the data from backend
+  fetch("http://localhost:8000/api/insertBlogs")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      setBlogData(blogData); // Assuming the data is an object representing a blog
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}, []);
 
 
     
@@ -36,7 +53,7 @@ function blogDisplay() {
      setShowDeleteConfirmation(false);
    };
 
-
+    
   return (
     <>
       {showDeleteConfirmation && (
@@ -60,42 +77,26 @@ function blogDisplay() {
           </div>
           <div className="form">
             <div className="title-container">
-              <h6>The Dance of Love: Embracing the Rhythm of the Heart</h6>
+              <b>TITLE:</b>
+              <h6>{blogData.title}</h6>
             </div>
             <div id="intro-container">
               <p className="intro-text">
-                <b>Introduction:</b> Welcome to "Heartfelt Chronicles," a place
-                where we explore the intricate facets of love and human
-                connection. Today, we embark on a journey to unravel the beauty
-                and complexity of love—the dance of emotions and the rhythm of
-                the heart.
+                <b>Introduction:</b>
+                {blogData.intro}
               </p>
               <div className="intro-container">
                 <img src={dance1} className="profile-img"></img>
               </div>
             </div>
             <div id="body-text">
-              <h2>Love: An Everlasting Melody</h2>
-              <p>
-                Love, often compared to a melodious tune, is a universal
-                language that transcends boundaries. It's a melody that
-                harmonizes souls, a rhythm that resonates in our hearts, and a
-                timeless composition that enriches our lives.
-              </p>
-              <h2>The Dance Begins: Attraction and Connection</h2>
-              <p>
-                The dance of love commences with the spark of attraction and the
-                magic of connection. It's that magnetic pull that draws two
-                souls together, an unspoken understanding that kindles the
-                flames of affection.
-              </p>
+              <b>Body:</b>
+              <p>{blogData.body}</p>
             </div>
             <div id="conclusion-text">
               <p>
-                <b>Conclusion:</b> A Symphony of Love Love, the symphony of our
-                lives, is a masterpiece composed of small, significant moments.
-                Embrace the dance, savor the melodies, and let your heart waltz
-                to the rhythm of love.
+                <b>Conclusion:</b>
+                {blogData.conclusion}
               </p>
             </div>
           </div>
