@@ -31,6 +31,17 @@ const queryUsers = async () => {
   }
 };
 
+const queryBlogs = async () => {
+  try {
+    const result = await client.query(`SELECT * FROM Blogs`);
+    console.log(result);
+    return result.rows;
+  } catch (error) {
+    console.error("Error querying blogs:", error);
+  }
+};
+
+
 const insertUser = async (name, email, password) => {
   try {
     const result = await client.query(
@@ -58,4 +69,11 @@ const insertBlog = async(
   }
 };
 
-export { client, connectToDatabase, queryUsers, insertUser, insertBlog };
+export {
+  client,
+  connectToDatabase,
+  queryUsers,
+  insertUser,
+  insertBlog,
+  queryBlogs,
+};

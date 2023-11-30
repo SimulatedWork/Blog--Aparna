@@ -1,6 +1,11 @@
 import cors from "cors";
 import express, { json } from "express";
-import { connectToDatabase, insertBlog, queryUsers } from "../backend/config/db.mjs";
+import {
+  connectToDatabase,
+  insertBlog,
+  queryUsers,
+  queryBlogs
+} from "../backend/config/db.mjs";
 import bodyParser from "body-parser";
 import { authRouter } from "./routes/auth.mjs";
 
@@ -33,4 +38,9 @@ const { title, intro, body, conclusion } = req.body;
 app.listen(PORT, async () => {
   await connectToDatabase()
   console.log(`Server is running on port ${PORT}`);
+});
+
+app.get("/api/blogs", async (req, res) => {
+  var blog = await queryBlogs();
+  res.send(blog);
 });
