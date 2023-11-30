@@ -1,0 +1,31 @@
+.thought-div{
+    margin-left: 60px;
+}
+
+a.view{
+    margin-left: 60%;
+    width: 50%;
+    color:black;
+    text-decoration: none;
+}
+
+.card1{
+    background-color:#f2f2f2;
+    width: 130vmin;
+    height: 250px;
+    display: flex;
+    border: solid black 1px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+
+}
+
+@media screen and (max-width:850px) {
+    .blog-header{
+        font-size: medium;
+        width: 110vw;
+    }
+    
+    
+
+}

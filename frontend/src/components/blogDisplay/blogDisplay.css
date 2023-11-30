@@ -7,7 +7,7 @@ h6{
     margin: 15px 0px;
 }
 
-.intro-container{
+#intro-container{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -25,27 +25,50 @@ h6{
 }
 
 #body-text{
-    width: 95%;
+    width: 100%;
     border: 1px solid black;
-    margin: 10px 20px;
     font-size: 20px;
+    margin-top: 10px;
 }
 
 #conclusion-text{
     margin: 20px 0px;
-    width: 95%;
+    width: 100%;
     border: 1px solid black;
-    margin: 20px 20px;
     font-size: 18px;
     
 }
 
-.done{
-    margin: 0px 0px 15px;
-}
-.done > a{
-    color: white;
-}
+@media screen and (max-width:850px){
+    .display{
+        display: flex;
+        justify-content: center;
+    }
+    #intro-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .intro-container{
+        display: flex;
+        justify-content: center;
+        font-size: medium;
 
+    }
+    .intro-text{
+        width: 100%;
+        height: auto;
+    }
+    .profile-img{
+        width: 50%;
+        height: 50%;
+    }
+    .title-container{
+        font-size: larger;
+    }
+    .intro-text,#body-text,#conclusion-text{
+        font-size: medium;
+        width: 100%;
 
+    }
+}
 

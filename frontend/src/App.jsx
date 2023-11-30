@@ -6,7 +6,7 @@ import Login from "../src/components/login/login";
 import Register from "../src/components/register/register";
 import AboutUs from "../src/components/aboutUs/aboutUs";
 import Mainpage2 from "../src/components/Mainpage2/mainpage2";
-import CreateForm from "../src/components/createForm/createForm";
+import CreateForm from "../src/components/CreateForm/createForm";
 import Create from "../src/components/create/create";
 import BlogDisplay from "../src/components/blogDisplay/blogDisplay";
 import Delete from "../src/components/Delete/delete";
@@ -32,6 +32,7 @@ function App() {
           <Route path="/blogDisplay" element={<BlogDisplay />} />
           <Route path="/delete" element={<Delete />} />
           <Route path="/profile" element={<Profile/>}/>
+          
         </Routes>
       </Router>
       {shouldRenderCreate ? <></> : <Create />}
