@@ -2,6 +2,7 @@ import React from 'react'
 import "./navbar2.css"
 import Mainpage from '../mainpage/mainpage';
 import { MdAccountCircle } from "react-icons/md";
+import profile from '../profile/profile';
 
 
 function navbar2() {
@@ -11,7 +12,7 @@ function navbar2() {
         BlogBouquet
       </div>
       <div className="right2">
-        <MdAccountCircle  className="nav-link" onClick={Mainpage} href="/profile" id="button" color='black' />
+        <MdAccountCircle  className="nav-link" onClick={profile} href="/profile" id="account" color='black' />
         
       </div>
     </nav>

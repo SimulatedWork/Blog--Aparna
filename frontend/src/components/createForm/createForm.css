@@ -2,7 +2,17 @@
     height: auto;
     width: 80vw;
     background-color: white;
+    position: relative;
     margin-left: 9%;
+    border-radius: 10px;
+    border: 2px solid black;
+
+
+}
+
+.display{
+    border-radius: 10px;
+    border: #000000;
 
 }
 
@@ -10,11 +20,13 @@
 .icon-bar{
     width: 100%;
     height:8vh;
-    background-color: #FD8B49;
+    background-color: #ffffff;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-radius: 10px;
+
 }
 .svg{
     color: black;
@@ -27,8 +39,10 @@
 .form{
     width: 95%;
     height: 100%;
-    background-color: white;
+    background-color: transparent;
     margin:  0px 5px 10px 5px;
+    border-radius: 10px;
+
     
 
 
@@ -75,6 +89,7 @@ div.right-icon{
     border-color: black;
     font-weight: 700;
     font-size: 28px;
+    
 
 }
 #intro-container{
@@ -149,4 +164,8 @@ textarea{
 }
 .done > a{
     color: white;
+}
+
+@media screen and (max-width:850px) {
+    
 }
