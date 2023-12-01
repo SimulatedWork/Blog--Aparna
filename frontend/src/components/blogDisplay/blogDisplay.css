@@ -7,6 +7,10 @@ h6{
     margin: 15px 0px;
 }
 
+svg{
+    cursor: pointer;
+}
+
 #intro-container{
     display: flex;
     flex-direction: row;
