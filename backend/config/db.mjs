@@ -69,6 +69,39 @@ const insertBlog = async(
   }
 };
 
+const deleteBlog = async (id) => {
+  try {
+    const blogResult = await client.query(
+      "DELETE FROM Blogs WHERE id = $1",
+      [id]
+    );
+    return blogResult;
+  } catch (error) {
+    console.log("Error deleting blog", error);
+    throw error;
+  }
+};
+
+const editBlog = async (
+  id,
+  editedTitle,
+  editedIntro,
+  editedBody,
+  editedConclusion
+) => {
+  try {
+    const blogResult = await client.query(
+      "UPDATE blogs SET title = $2, intro = $3, body = $4, conclusion = $5 WHERE id = $1 RETURNING *",
+      [id, editedTitle, editedIntro, editedBody, editedConclusion]
+    );
+    console.log("editing success")
+    return blogResult;
+  } catch (error) {
+    console.log("Error editing blog", error);
+    throw error;
+  }
+};
+
 export {
   client,
   connectToDatabase,
@@ -76,4 +109,6 @@ export {
   insertUser,
   insertBlog,
   queryBlogs,
+  deleteBlog,
+  editBlog
 };
