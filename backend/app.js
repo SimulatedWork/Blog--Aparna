@@ -63,7 +63,13 @@ app.delete("/api/blogs/:id", async (req, res) => {
 app.put("/api/blogs/:id", async (req, res) =>{
   try {
     const blogId = req.params.id;
-    const editBlog = await editBlog(blogId);
+    const result = await editBlog(
+      blogId,
+      req.body.title,
+      req.body.intro,
+      req.body.body,
+      req.body.conclusion
+    );
 
     console.log(`Edited successfully`);
     res.status(200).json({message: "Blog edited successfully" });
