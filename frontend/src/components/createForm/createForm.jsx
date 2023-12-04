@@ -118,12 +118,6 @@ function CreateForm() {
               ></textarea>
             </div>
             <div id="intro-container">
-              <textarea
-                className="intro"
-                placeholder="Introduction:"
-                value={intro}
-                onChange={handleTextareaChange}
-              ></textarea>
               {profilePicture ? (
                 <div className="profile">
                   <img src={profilePicture} alt="Profile" />
@@ -136,6 +130,12 @@ function CreateForm() {
                   onChange={handleProfilePictureChange}
                 />
               )}
+              <textarea
+                className="intro"
+                placeholder="Introduction:"
+                value={intro}
+                onChange={handleTextareaChange}
+              ></textarea>
             </div>
             <div id="body-div">
               <textarea

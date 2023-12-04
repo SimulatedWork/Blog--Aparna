@@ -4,7 +4,9 @@ import {
   connectToDatabase,
   insertBlog,
   queryUsers,
-  queryBlogs
+  queryBlogs,
+  deleteBlog,
+  editBlog
 } from "../backend/config/db.mjs";
 import bodyParser from "body-parser";
 import { authRouter } from "./routes/auth.mjs";
@@ -43,4 +45,36 @@ app.listen(PORT, async () => {
 app.get("/api/blogs", async (req, res) => {
   var blog = await queryBlogs();
   res.send(blog);
+});
+
+app.delete("/api/blogs/:id", async (req, res) => {
+  try {
+    const blogId = req.params.id;
+    const delBlog = await deleteBlog(blogId);
+
+    console.log(`Deleted successfully`);
+    res.status(200).json({ message: "Blog deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting blog", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.put("/api/blogs/:id", async (req, res) =>{
+  try {
+    const blogId = req.params.id;
+    const result = await editBlog(
+      blogId,
+      req.body.title,
+      req.body.intro,
+      req.body.body,
+      req.body.conclusion
+    );
+
+    console.log(`Edited successfully`);
+    res.status(200).json({message: "Blog edited successfully" });
+  } catch (error){
+      console.error("Error editing blog", error);
+      res.status(500).json({error: "Internal server error" })
+}
 });
